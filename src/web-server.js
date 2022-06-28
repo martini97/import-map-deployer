@@ -4,6 +4,7 @@ require("dotenv").config();
 
 const express = require("express"),
   bodyParser = require("body-parser"),
+  cors = require("cors"),
   app = express(),
   ioOperations = require("./io-operations.js"),
   modify = require("./modify.js"),
@@ -34,6 +35,7 @@ if (process.env.NODE_ENV !== "test") {
 }
 
 app.set("etag", false);
+app.use(cors());
 app.use(bodyParser.text({ type: "*/*" }));
 app.use(
   morgan(
